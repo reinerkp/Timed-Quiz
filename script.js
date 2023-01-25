@@ -4,7 +4,9 @@ var correct = document.querySelector(".correct")
 var incorrect = document.querySelector(".incorrect")
 var timerElemet = document.querySelector(".timer-count")
 var startButton = document.querySelector(".start-button")
+var submitButton = document.querySelector("#submit")
 var currentQuestion = 0
+var score = 0
 var answer1Button = document.querySelector("#answer1")
 var answer2Button = document.querySelector("#answer2")
 var answer3Button = document.querySelector("#answer3")
@@ -43,57 +45,9 @@ function loadQuestion() {
     answer3Button.innerHTML = answer3Text;
     answer4Button.innerHTML = answer4Text;
 }
-function answerQueSstion (){
+function answerQuestion (){
   currentQuestion++; 
   loadQuestion();
-}
-
-function selectAnswer1 (){
-    var answers = Object.values(allQuestions)[currentQuestion];
-    var correctAnswer = answers[4];
-    var correct = false;
-    if (correctAnswer == 0) {
-        correct = true;
-    }
-    alert('correct '+ correct);
-    answerQuestion();
-
-}
-
-function selectAnswer2 (){
-    var answers = Object.values(allQuestions)[currentQuestion];
-    var correctAnswer = answers[4];
-    var correct = false;
-    if (correctAnswer == 1) {
-        correct = true;
-    }
-    alert('correct '+ correct);
-    answerQuestion();
-
-}
-
-function selectAnswer3 (){
-    var answers = Object.values(allQuestions)[currentQuestion];
-    var correctAnswer = answers[4];
-    var correct = false;
-    if (correctAnswer == 2) {
-        correct = true;
-    }
-    alert('correct '+ correct);
-    answerQuestion();
-
-}
-
-function selectAnswer4 (){
-    var answers = Object.values(allQuestions)[currentQuestion];
-    var correctAnswer = answers[4];
-    var correct = false;
-    if (correctAnswer == 3) {
-        correct = true;
-    }
-    alert('correct '+ correct);
-    answerQuestion();
-
 }
 
 //gives an alert when the timer is up
@@ -101,13 +55,32 @@ function timeExpires (){
     alert('time expires');
 }
 
+function selectAnswer (event){
+    var answers = Object.values(allQuestions)[currentQuestion];
+    var correctAnswer = answers[4];
+    var answerChosen = event.target.innerText
+    var answerChosenIndex = answers.indexOf(answerChosen)
+    var correct = false;
+    console.log(answerChosenIndex)
+    if (correctAnswer === answerChosenIndex) {
+        correct = true;
+        score ++;
+    }
+    alert('correct '+ correct);
+    answerQuestion();
+}
 
+function submitScore (){
+    var initials = document.querySelector("#enterInitialsTextArea");
+}
 //once clicked it start the quiz
 startButton.addEventListener("click", loadQuestion);
-answer1Button.addEventListener("click", selectAnswer1);
-answer2Button.addEventListener("click", selectAnswer2);
-answer3Button.addEventListener("click", selectAnswer3);
-answer4Button.addEventListener("click", selectAnswer4);
+answer1Button.addEventListener("click", selectAnswer);
+answer2Button.addEventListener("click", selectAnswer);
+answer3Button.addEventListener("click", selectAnswer);
+answer4Button.addEventListener("click", selectAnswer);
+submitButton.addEventListener("click", submitScore);
+
 
 
 
