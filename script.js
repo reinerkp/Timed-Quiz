@@ -11,6 +11,8 @@ var answer1Button = document.querySelector("#answer1")
 var answer2Button = document.querySelector("#answer2")
 var answer3Button = document.querySelector("#answer3")
 var answer4Button = document.querySelector("#answer4")
+var mainContainer = document.querySelector("#main")
+
 //create init function 
 //create a startGame funtions 
 //create questions
@@ -81,15 +83,33 @@ answer3Button.addEventListener("click", selectAnswer);
 answer4Button.addEventListener("click", selectAnswer);
 submitButton.addEventListener("click", submitScore);
 
-
-
+function endQuiz() {
+    mainContainer.textContent = ''
+    var inputEl = document.createElement('input')
+    inputEl.setAttribute('placeholder', 'Name')
+    var submitBtn = document.createElement('button')
+    submitBtn.textContent = "SUBMIT"
+    mainContainer.append(inputEl, submitBtn)
+    submitBtn.addEventListener('click', function() {
+        var  userData = {
+            name: inputEl.value,
+            finalScore: score
+        }
+        var storage = JSON.parse(localStorage.getItem('quizScores'))
+        if(storage === null) {
+            storage = []
+        }
+        storage.push(userData)
+        localStorage.setItem('quizScores', JSON.stringify(storage))
+        window.location.href = 'highscore.html'
+    })
+}
 
 
 
     
     // Start the quiz right away
 
-    
 
 
 
