@@ -11,7 +11,7 @@ var answer1Button = document.querySelector("#answer1")
 var answer2Button = document.querySelector("#answer2")
 var answer3Button = document.querySelector("#answer3")
 var answer4Button = document.querySelector("#answer4")
-var mainContainer = document.querySelector("#main")
+var mainContainer = document.querySelector("#mainDiv")
 
 //create init function 
 //create a startGame funtions 
@@ -107,14 +107,15 @@ function endQuiz() {
 
 
 
+
     
-    // Start the quiz right away
+    
 
 
 
 
 //create a correct answer function 
 //creat an incorrect answer funtion 
-//create a timer function 
+
 //create a local storage of saved scores 
 // add an event listener
