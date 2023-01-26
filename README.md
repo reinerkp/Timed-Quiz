@@ -18,6 +18,6 @@ Depending on what you are making, it can be a good idea to include screenshots o
 Thank you to DU for the assighnment.
 
 ## Link
-For open source projects, say how it is licensed.
+(https://reinerkp.github.io/Timed-Quiz/)
 
 
