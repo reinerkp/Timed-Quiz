@@ -6,6 +6,8 @@ var timerElemet = document.querySelector(".timer-count")
 var startButton = document.querySelector(".start-button")
 var submitButton = document.querySelector("#submit")
 var currentQuestion = 0
+var correctCount = 0
+var incorrectCount = 0 
 var score = 0
 var answer1Button = document.querySelector("#answer1")
 var answer2Button = document.querySelector("#answer2")
@@ -49,7 +51,12 @@ function loadQuestion() {
 }
 function answerQuestion (){
   currentQuestion++; 
-  loadQuestion();
+  if (currentQuestion <3 ){
+    loadQuestion ();
+  } 
+  else {
+    endQuiz()
+  }
 }
 
 //gives an alert when the timer is up
@@ -58,17 +65,22 @@ function timeExpires (){
 }
 
 function selectAnswer (event){
+    var eleCorrect = document.getElementById("correct");
+    var eleIncorrect = document.getElementById("incorrect");
     var answers = Object.values(allQuestions)[currentQuestion];
     var correctAnswer = answers[4];
     var answerChosen = event.target.innerText
     var answerChosenIndex = answers.indexOf(answerChosen)
-    var correct = false;
+    
     console.log(answerChosenIndex)
     if (correctAnswer === answerChosenIndex) {
-        correct = true;
-        score ++;
+        correctCount++;
     }
-    alert('correct '+ correct);
+    else {
+        incorrectCount++;
+    }
+    eleCorrect.innerHTML = correctCount;
+    eleIncorrect.innerHTML = incorrectCount;
     answerQuestion();
 }
 
@@ -93,7 +105,7 @@ function endQuiz() {
     submitBtn.addEventListener('click', function() {
         var  userData = {
             name: inputEl.value,
-            finalScore: score
+            finalScore: correctCount
         }
         var storage = JSON.parse(localStorage.getItem('quizScores'))
         if(storage === null) {
@@ -101,7 +113,7 @@ function endQuiz() {
         }
         storage.push(userData)
         localStorage.setItem('quizScores', JSON.stringify(storage))
-        window.location.href = 'highscore.html'
+        window.location.href = './scores/highscores.html'
     })
 }
 
