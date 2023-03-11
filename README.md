@@ -14,8 +14,10 @@ Depending on what you are making, it can be a good idea to include screenshots o
 
 
 
-## Authors and acknowledgment
-Thank you to DU for the assighnment.
+## Pictures
+Below is an image of the application!
+
+![An image that shows a website with 4 answer buttons](./Assets/TimedQuizPic.png)
 
 ## Link
 [website link](https://reinerkp.github.io/Timed-Quiz/)

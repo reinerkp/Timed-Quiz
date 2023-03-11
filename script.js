@@ -7,7 +7,7 @@ var startButton = document.querySelector(".start-button")
 var submitButton = document.querySelector("#submit")
 var currentQuestion = 0
 var correctCount = 0
-var incorrectCount = 0 
+var incorrectCount = 0
 var score = 0
 var answer1Button = document.querySelector("#answer1")
 var answer2Button = document.querySelector("#answer2")
@@ -49,11 +49,12 @@ function loadQuestion() {
     answer3Button.innerHTML = answer3Text;
     answer4Button.innerHTML = answer4Text;
 }
+
 function answerQuestion (){
-  currentQuestion++; 
-  if (currentQuestion <3 ){
-    loadQuestion ();
-  } 
+  currentQuestion++;
+  if (currentQuestion < 3) {
+    loadQuestion();
+  }
   else {
     endQuiz()
   }
@@ -61,7 +62,7 @@ function answerQuestion (){
 
 //gives an alert when the timer is up
 function timeExpires (){
-    alert('time expires');
+    //alert('time expires');
 }
 
 function selectAnswer (event){
@@ -81,6 +82,7 @@ function selectAnswer (event){
     }
     eleCorrect.innerHTML = correctCount;
     eleIncorrect.innerHTML = incorrectCount;
+
     answerQuestion();
 }
 
@@ -103,17 +105,17 @@ function endQuiz() {
     submitBtn.textContent = "SUBMIT"
     mainContainer.append(inputEl, submitBtn)
     submitBtn.addEventListener('click', function() {
-        var  userData = {
+        var userData = {
             name: inputEl.value,
             finalScore: correctCount
-        }
+        };
         var storage = JSON.parse(localStorage.getItem('quizScores'))
         if(storage === null) {
             storage = []
         }
         storage.push(userData)
         localStorage.setItem('quizScores', JSON.stringify(storage))
-        window.location.href = './scores/highscores.html'
+        window.location.href = "./Scores/highscores.html"
     })
 }
 
